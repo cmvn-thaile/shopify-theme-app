@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "theme-app-extension"
+client_id = "a83d9a1af3cbccb4882ef8d59bbcb341"
+application_url = "https://fist-delight-juan-shaw.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://fist-delight-juan-shaw.trycloudflare.com/auth/callback",
+  "https://fist-delight-juan-shaw.trycloudflare.com/auth/shopify/callback",
+  "https://fist-delight-juan-shaw.trycloudflare.com/api/auth/callback",
+  "https://fist-delight-juan-shaw.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "shoesstore13.myshopify.com"
