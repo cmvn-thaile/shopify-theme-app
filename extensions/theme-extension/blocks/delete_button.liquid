@@ -1,0 +1,54 @@
+<style>
+  .account-action {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 20px;
+  }
+  .btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn.btn-delete {
+    color: #fff;
+    padding: 12px 34px;
+    transition: all ease-in 0.2s;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    background-color: #fff;
+    color: {{block.settings.color}};
+    border: 1px solid {{block.settings.color}};
+  }
+
+  .btn.btn-delete:hover {
+    color: #fff
+    background-color: {{block.settings.color}};
+  }
+</style>
+
+<div class="account-action">
+  <button id="btn-delete" class="btn btn-delete">{{block.settings.btn-delete}}</button>
+</div>
+
+<script>
+  const delBtn = document.querySelector('#btn-delete');
+  delBtn.addEventListener('click', function() {
+    alert(confirm("Are you sure you want to delete your account?!"))
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Delete Account Button",
+  "target": "section",
+  "settings": [{
+    "type": "text",
+    "id": "btn-delete",
+    "label": "Delete Account",
+    "default": "Click me"
+  },
+  { "label": "Color", "id": "color", "type": "color", "default": "#000000" }
+  ]
+}
+{% endschema %}
