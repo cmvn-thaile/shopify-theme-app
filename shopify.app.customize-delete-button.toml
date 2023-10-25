@@ -2,19 +2,19 @@
 
 name = "tien-theme"
 client_id = "3d31ff8d8aee03d4a0026625990ed8c3"
-application_url = "https://university-mobiles-grounds-cape.trycloudflare.com"
+application_url = "https://read-assumptions-trains-gcc.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_products, read_customers, write_customers"
 
 [auth]
 redirect_urls = [
-  "https://university-mobiles-grounds-cape.trycloudflare.com/auth/callback",
-  "https://university-mobiles-grounds-cape.trycloudflare.com/auth/shopify/callback",
-  "https://university-mobiles-grounds-cape.trycloudflare.com/api/auth/callback",
-  "https://university-mobiles-grounds-cape.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://read-assumptions-trains-gcc.trycloudflare.com/auth/callback",
+  "https://read-assumptions-trains-gcc.trycloudflare.com/auth/shopify/callback",
+  "https://read-assumptions-trains-gcc.trycloudflare.com/api/auth/callback",
+  "https://read-assumptions-trains-gcc.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

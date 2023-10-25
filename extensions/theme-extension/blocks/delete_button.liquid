@@ -17,18 +17,17 @@
     font-weight: 500;
     border-radius: 4px;
     background-color: #fff;
-    color: {{block.settings.color}};
-    border: 1px solid {{block.settings.color}};
+    color: {{ block.settings.color }};
+    border: 1px solid{{block.settings.color}};
   }
 
   .btn.btn-delete:hover {
-    color: #fff
-    background-color: {{block.settings.color}};
+    color: #fff background-color: {{ block.settings.color }};
   }
 </style>
 
 <div class="account-action">
-  <button id="btn-delete" class="btn btn-delete">{{block.settings.btn-delete}}</button>
+  <button id="btn-delete" class="btn btn-delete">{{ block.settings.btn-delete }}</button>
 </div>
 
 <script>
@@ -39,16 +38,22 @@
 </script>
 
 {% schema %}
-{
-  "name": "Delete Account Button",
-  "target": "section",
-  "settings": [{
-    "type": "text",
-    "id": "btn-delete",
-    "label": "Delete Account",
-    "default": "Click me"
-  },
-  { "label": "Color", "id": "color", "type": "color", "default": "#000000" }
-  ]
-}
+  {
+    "name": "Delete Account Button",
+    "target": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "btn-delete",
+        "label": "Delete Account",
+        "default": "Click me"
+      },
+      {
+        "label": "Color",
+        "id": "color",
+        "type": "color",
+        "default": "#000000"
+      }
+    ]
+  }
 {% endschema %}
