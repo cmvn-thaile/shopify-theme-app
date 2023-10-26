@@ -14,6 +14,7 @@ import { useTranslation, Trans } from "react-i18next";
 import { trophyImage } from "../assets";
 
 import { ProductsCard } from "../components";
+import { useAuthenticatedFetch } from '../hooks';
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ export default function HomePage() {
               <Stack.Item fill>
                 <TextContainer spacing="loose">
                   <Text as="h2" variant="headingMd">
-                   abcscascasc
+                   abcscascasc2
                   </Text>
                   <p>
                     <Trans

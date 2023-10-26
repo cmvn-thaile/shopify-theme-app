@@ -1,0 +1,26 @@
+<button id="delete-account-btn" style="color:{{ block.settings.colour }}">Gets customer info</button>
+
+</script>
+
+
+{% schema %}
+  {
+    "name": "Custom Button",
+    "target": "section",
+    "javascript": "index.js",
+    "settings": [
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text Here",
+        "default": "Click Me!"
+      },
+      {
+        "type": "color",
+        "id": "colour",
+        "label": "Button Colour",
+        "default": "#000000"
+      }
+    ]
+  }
+{% endschema %}

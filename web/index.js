@@ -1,24 +1,29 @@
 // @ts-check
-import { join } from "path";
-import { readFileSync } from "fs";
-import express from "express";
-import serveStatic from "serve-static";
+import { join } from 'path';
+import { readFileSync } from 'fs';
+import express from 'express';
+import serveStatic from 'serve-static';
 
-import shopify from "./shopify.js";
-import productCreator from "./product-creator.js";
-import GDPRWebhookHandlers from "./gdpr.js";
+import shopify from './shopify.js';
+import productCreator from './product-creator.js';
+import GDPRWebhookHandlers from './gdpr.js';
+import cors from 'cors';
 
 const PORT = parseInt(
-  process.env.BACKEND_PORT || process.env.PORT || "3000",
+  process.env.BACKEND_PORT || process.env.PORT || '8081',
   10
 );
 
 const STATIC_PATH =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV === 'production'
     ? `${process.cwd()}/frontend/dist`
     : `${process.cwd()}/frontend/`;
 
 const app = express();
+app.use(cors());
+
+// const client = new shopify.api.clients.Rest({session: res.locals.shopify});
+// const response = client.get({path: 'shop'});
 
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
@@ -35,21 +40,20 @@ app.post(
 // If you are adding routes outside of the /api path, remember to
 // also add a proxy rule for them in web/frontend/vite.config.js
 
-app.use("/api/*", shopify.validateAuthenticatedSession());
+app.use('/api/*', shopify.validateAuthenticatedSession());
 
 app.use(express.json());
 
-app.get("/api/products/count", async (_req, res) => {
+app.get('/api/products/count', async (_req, res) => {
   const countData = await shopify.api.rest.Product.count({
     session: res.locals.shopify.session,
   });
   res.status(200).send(countData);
 });
 
-app.get("/api/products/create", async (_req, res) => {
+app.get('/api/products/create', async (_req, res) => {
   let status = 200;
   let error = null;
-
   try {
     await productCreator(res.locals.shopify.session);
   } catch (e) {
@@ -60,14 +64,26 @@ app.get("/api/products/create", async (_req, res) => {
   res.status(status).send({ success: status === 200, error });
 });
 
+app.use('/api/customer/:id', async (_req, res) => {
+  const id = _req.params.id;
+  // `session` is built as part of the OAuth process
+  const customerData = await shopify.api.rest.Customer.find({
+    session: res.locals.shopify.session,
+    id: id,
+  });
+
+  res.status(200).send(customerData);
+});
+
+
 app.use(shopify.cspHeaders());
 app.use(serveStatic(STATIC_PATH, { index: false }));
 
-app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
+app.use('/*', shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
   return res
     .status(200)
-    .set("Content-Type", "text/html")
-    .send(readFileSync(join(STATIC_PATH, "index.html")));
+    .set('Content-Type', 'text/html')
+    .send(readFileSync(join(STATIC_PATH, 'index.html')));
 });
 
 app.listen(PORT);

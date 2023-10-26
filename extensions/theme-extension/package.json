@@ -1,0 +1,16 @@
+{
+  "name": "theme-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@shopify/app-bridge-react": "^3.7.9",
+    "axios": "^1.5.1"
+  }
+}

@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@shopify/app": "3.50.0",
-    "@shopify/cli": "3.50.0"
+    "@shopify/cli": "3.50.0",
+    "cors": "^2.8.5",
+    "ngrok": "^5.0.0-beta.2"
   },
   "author": "thai.le",
   "private": true,

@@ -16,11 +16,19 @@ const billingConfig = {
   },
 };
 
+const PORT = 8081;
+
 const shopify = shopifyApp({
   api: {
-    apiVersion: LATEST_API_VERSION,
+    apiVersion: '2023-04',
     restResources,
     billing: undefined, // or replace with billingConfig above to enable example billing
+    apiKey: 'a83d9a1af3cbccb4882ef8d59bbcb341',
+    apiSecretKey: '148772bfe3dc77aa4fea531a431383f6',
+    scopes: ['read_products','write_products','read_customers','write_customers'],
+    hostScheme: 'http',
+    hostName: `localhost:${PORT}`,
+
   },
   auth: {
     path: "/api/auth",
@@ -29,6 +37,7 @@ const shopify = shopifyApp({
   webhooks: {
     path: "/api/webhooks",
   },
+
   // This should be replaced with your preferred storage strategy
   sessionStorage: new SQLiteSessionStorage(DB_PATH),
 });
