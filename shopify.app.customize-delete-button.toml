@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "tien-theme"
+client_id = "3d31ff8d8aee03d4a0026625990ed8c3"
+application_url = "https://read-assumptions-trains-gcc.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products, read_customers, write_customers"
+
+[auth]
+redirect_urls = [
+  "https://read-assumptions-trains-gcc.trycloudflare.com/auth/callback",
+  "https://read-assumptions-trains-gcc.trycloudflare.com/auth/shopify/callback",
+  "https://read-assumptions-trains-gcc.trycloudflare.com/api/auth/callback",
+  "https://read-assumptions-trains-gcc.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "tiendn-shop.myshopify.com"
